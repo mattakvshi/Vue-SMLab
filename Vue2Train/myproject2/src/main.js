@@ -8,8 +8,9 @@ Vue.component('PublicatedButton', PublicatedButton)
 
 Vue.config.productionTip = false
 
+store.dispatch('fetchArticles')
+
 new Vue({
-  data: store.state,
   router,
   store,
   render: h => h(App),

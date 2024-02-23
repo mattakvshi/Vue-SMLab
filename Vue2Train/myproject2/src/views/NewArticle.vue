@@ -1,27 +1,26 @@
 <template>
     <ArticleForm title="New post" body="" nemeAuthor="" isPublished=""
      v-on:add-article="addArticle" />
-    </template>
+</template>
     
     <script>
     import ArticleForm from '../components/ArticleForm.vue'
     import store from '../store'
-
+    
     export default {
       name: 'NewArticle',
-      components:{
+      components: {
         ArticleForm,
       },
       methods: {
         addArticle: function(article) {
-            store.setArticle(article)
-            this.$router.push('/')
+          store.commit('addArticle', article);
+          this.$router.push('/');
         },
-    },
-      
+      },
     }
-    </script>
     
+    </script>
     <!-- Add "scoped" attribute to limit CSS to this component only -->
     <style scoped>
      

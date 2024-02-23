@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <ul v-if="articles.length">
+    <ul v-if="articles && articles.length">
       <ArticleCard
         v-for="article in articles"
         :key="article.id"
@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import ArticleCard from './ArticleCard.vue'
+import ArticleCard from './ArticleCard.vue';
+import { inject, onMounted, watch } from 'vue';
 
 export default {
   name: 'ArticleList',
@@ -29,12 +30,24 @@ export default {
   components: {
     ArticleCard,
   },
-  computed: {
-    articles() {
-      return this.$store.state.articles;
-    }
-  }
-}
+  setup() {
+    const store = inject('store');
+    const articles = store.state.articles;
+    
+    onMounted(() => {
+      store.getArticleList();
+    });
+
+    // Обновление списка статей при изменении в хранилище
+    watch(() => store.state.articles, () => {
+      articles.value = store.state.articles;
+    });
+
+    return {
+      articles
+    };
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

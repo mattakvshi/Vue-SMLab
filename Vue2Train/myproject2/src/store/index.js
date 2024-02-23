@@ -1,40 +1,40 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-var store = { 
+Vue.use(Vuex)
 
-    debug: true, 
-    state: {
-        articles: [],
+export default new Vuex.Store({
+  state: {
+    articles: []
+  },
+  getters: {
+  },
+  mutations: {
+    fetchArticles(state, articles) {
+      state.articles = articles;
     },
-    setMessageAction (newValue) {
-        if (this.debug) console.log("setMessageAction Bызвано с ", newValue); 
-        this.state.message = newValue;
-    },
-    clearMessageAction() {
-        if (this.debug) console.log("clearMessageAction BызBано");
-        this.state.message = ""
-    },
-    setArticle(article){
-        let newArticle = {
-            id: 0,
-            ...article
-        };
-      
-         // Увеличиваем id существующих элементов на 1
-        this.state.articles.forEach((item) => {
-            item.id += 1;
-        });
-      
-        // Вставляем новый элемент в начало массива
-        this.state.articles.unshift(newArticle);
-    },
-    getArticleList(){ 
-        fetch('./articles.json')
+    addArticle(state, article) {
+      let newArticle = {
+        id: 0,
+        ...article
+      };
+  
+      // Увеличиваем id существующих элементов на 1
+      state.articles.forEach((item) => {
+        item.id += 1;
+      });
+
+      state.articles.unshift(newArticle);
+    }
+  },
+  actions: {
+    fetchArticles(context) {
+      fetch('./articles.json')
         .then(response => response.json())
-        .then(articles => this.state.articles = articles["articles"]);
+        .then(articles => context.commit('fetchArticles', articles["articles"]));
         console.log('Fetch data');
-    },
-}
-
-store.getArticleList()
-export default store
-
+    }
+  },
+  modules: {
+  }
+})
