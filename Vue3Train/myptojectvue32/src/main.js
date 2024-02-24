@@ -4,7 +4,7 @@ import router from './router';
 import store from './store';
 import PublicatedButton from './components/PublicatedButton.vue';
 
-const app = createApp(App);
+const app = createApp(App).use(store);
 
 app.component('PublicatedButton', PublicatedButton);
 

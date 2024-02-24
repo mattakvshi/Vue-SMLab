@@ -10,8 +10,20 @@
 </template>
 
 <script>
+import  {onBeforeMount } from "vue"
+import { useStore } from "vuex"
+
 export default {
   name: 'App',
+  setup(){
+    const store = useStore()
+
+    onBeforeMount(() => {
+      store.dispatch('fetchArticles').then(() => {
+        console.log('Articles loaded');
+      });
+    });
+  }
 }
 </script>
 

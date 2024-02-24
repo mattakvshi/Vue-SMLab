@@ -20,7 +20,7 @@
 
 <script>
 import ArticleCard from './ArticleCard.vue';
-import { inject, onMounted, watch } from 'vue';
+import { inject, onBeforeMount, computed } from 'vue';
 
 export default {
   name: 'ArticleList',
@@ -32,16 +32,18 @@ export default {
   },
   setup() {
     const store = inject('store');
-    const articles = store.state.articles;
-    
-    onMounted(() => {
+
+    onBeforeMount(() => {
       store.getArticleList();
     });
 
     // Обновление списка статей при изменении в хранилище
-    watch(() => store.state.articles, () => {
-      articles.value = store.state.articles;
-    });
+    const articles = computed(() => store.state.articles);
+
+    // // Обновление списка статей при изменении в хранилище
+    // watch(() => store.state.articles, () => {
+    //   articles.value = store.state.articles;
+    // });
 
     return {
       articles

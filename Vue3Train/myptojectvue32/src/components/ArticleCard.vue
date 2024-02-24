@@ -28,6 +28,7 @@ export default {
     isPublished: Boolean
   },
   setup(props) {
+    console.log(props)
     const published = ref(props.isPublished);
 
     const nameAuthorItalic = computed(() => published.value ? 'font-style: normal;' : 'font-style: italic;');

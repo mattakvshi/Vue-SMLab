@@ -1,40 +1,46 @@
-import { reactive } from 'vue';
+import { createStore } from 'vuex'
+ 
+const store = createStore({
+  state: {
+    articles: [],
+  },
+  getters: {
+  getArticles: (state) => {
+      return state.articles;
+    }
+  },
+  mutations: {
+    fetchArticlesMutation(state, articles) {
+      state.articles = articles;
+    },
+    addArticle(state, article) {
+      let newArticle = {
+        id: 0,
+        ...article
+      };
+  
+      // Увеличиваем id существующих элементов на 1
+      state.articles.forEach((item) => {
+        item.id += 1;
+      });
 
-const store = reactive({
-    debug: true,
-    state: {
-        articles: [],
+      state.articles.unshift(newArticle);
+    }
+  },
+  actions: {
+    async fetchArticles({ commit }) {
+      const response = await fetch('./articles.json');
+      const articles = await response.json();
+      commit('fetchArticlesMutation', articles["articles"]);
+      console.log('Fetch data')
     },
-    setMessageAction(newValue) {
-        if (this.debug) console.log("setMessageAction вызвано с ", newValue);
-        this.state.message = newValue;
-    },
-    clearMessageAction() {
-        if (this.debug) console.log("clearMessageAction вызвано");
-        this.state.message = "";
-    },
-    setArticle(article) {
-        let newArticle = {
-            id: 0,
-            ...article
-        };
-
-        // Увеличиваем id существующих элементов на 1
-        this.state.articles.forEach((item) => {
-            item.id += 1;
-        });
-
-        // Вставляем новый элемент в начало массива
-        this.state.articles.unshift(newArticle);
-    },
-    async getArticleList() {
-        const response = await fetch('./articles.json');
-        const articles = await response.json();
-        this.state.articles = articles["articles"];
-        console.log('Fetch data');
-    },
-});
-
-store.getArticleList();
+    
+    async addNewArticle({ commit }, newArticle) {
+      commit('addArticle', newArticle);
+    }
+  },
+  modules: {
+  }
+})
 
 export default store;
