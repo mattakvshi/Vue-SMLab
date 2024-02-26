@@ -1,50 +1,32 @@
-import { createStore } from 'vuex'
- 
-const store = createStore({
-  state: {
+import { defineStore } from 'pinia'
+
+export const useArticlesStore = defineStore('articles', {
+  state: () => ({
     articles: [],
-  },
+  }),
   getters: {
-  getArticles: (state) => {
+    getArticles: (state) => {
       return state.articles;
     }
   },
-  mutations: {
-    fetchArticlesMutation(state, articles) {
-      state.articles = articles;
-    },
-    addArticle(state, article) {
-      let newArticle = {
-        id: 0,
-        ...article
-      };
-  
-      // Увеличиваем id существующих элементов на 1
-      state.articles.forEach((item) => {
-        item.id += 1;
-      });
-
-      state.articles.unshift(newArticle);
-    }
-  },
   actions: {
-    async fetchArticles({ commit }) {
+    async fetchArticles() {
       try {
         const response = await fetch('./articles.json');
         const articles = await response.json();
-        commit('fetchArticlesMutation', articles["articles"]);
+        this.articles = articles["articles"];
         console.log('Fetch data');
       } catch (error) {
         console.error('Error fetching articles:', error);
       }
     },
     
-    async addNewArticle({ commit }, newArticle) {
-      commit('addArticle', newArticle);
+    async addNewArticle(newArticle) {
+      let newId = this.articles.length ? this.articles[this.articles.length - 1].id + 1 : 0;
+      this.articles.unshift({
+        id: newId,
+        ...newArticle
+      });
     }
   },
-  modules: {
-  }
 })
-
-export default store;

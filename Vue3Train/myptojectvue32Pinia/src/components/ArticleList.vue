@@ -13,18 +13,16 @@
       />
     </ul>
     <div v-else>
-        <p >
-          No articles in the list.
-        </p>
-        <button @click="reArticles">Reload</button>
-      </div>
+      <p>No articles in the list.</p>
+      <button @click="reArticles">Reload</button>
+    </div>
   </div>
 </template>
 
 <script>
 import ArticleCard from './ArticleCard.vue';
 import { computed } from 'vue';
-import { useStore } from 'vuex'
+import { useArticlesStore } from '../store'
 
 export default {
   name: 'ArticleList',
@@ -35,28 +33,19 @@ export default {
     ArticleCard,
   },
   setup() {
-    const store = useStore();
+    const articlesStore = useArticlesStore()
 
-    const articles = computed(() => store.getters.getArticles);
+    const articles = computed(() => articlesStore.getArticles)
 
     const reArticles = () => {
-        try {
-          store.dispatch('fetchArticles').then(() => {
-        if(store.getters.getArticles.lenght)
+      articlesStore.fetchArticles().then(() => {
+        if (articlesStore.getArticles.length) {
           console.log('Articles loaded')
-        else
-        console.log('Articles not loaded')
-      });
-        } catch (error) {
-          return [];
+        } else {
+          console.log('Articles not loaded')
         }
-      }
-
-    //onBeforeMount(() => {
-      // store.dispatch('fetchArticles').then(() => {
-      //   console.log('Articles loaded');
-      // });
-    //});
+      })
+    }
 
     return {
       articles,

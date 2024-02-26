@@ -11,16 +11,16 @@
 
 <script>
 import  {onBeforeMount } from "vue"
-import { useStore } from "vuex"
+import { useArticlesStore } from './store'
 
 export default {
   name: 'App',
   setup(){
-    const store = useStore()
+    const articlesStore = useArticlesStore()
 
     onBeforeMount(() => {
-      store.dispatch('fetchArticles').then(() => {
-        if(store.getters.getArticles.lenght)
+      articlesStore.fetchArticles().then(() => {
+        if(articlesStore.getArticles.length)
           console.log('Articles loaded')
         else
         console.log('Articles not loaded')

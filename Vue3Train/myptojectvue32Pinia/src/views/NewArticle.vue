@@ -4,7 +4,7 @@
 
 <script>
 import ArticleForm from '../components/ArticleForm.vue';
-import {useStore} from 'vuex'
+import { useArticlesStore } from '../store'
 import { useRouter } from 'vue-router';
 
 export default {
@@ -14,10 +14,10 @@ export default {
   },
   setup() {
     const router = useRouter();
-    const store = useStore();
+    const articlesStore = useArticlesStore()
 
     const addArticle = (article) => {
-      store.dispatch('addNewArticle', article);
+      articlesStore.addNewArticle(article);
       router.push('/');
     };
 
