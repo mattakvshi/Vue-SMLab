@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
-        <router-link to="/new">Add new artivle</router-link>
+        <router-link class="nav" to="/">Home</router-link>
+        <router-link class="nav" to="/about">About</router-link>
+        <router-link class="nav" to="/new">Add new artivle</router-link>
     </div>
     <router-view/>
   </div>
@@ -39,6 +39,18 @@ button {
   /* отображаем курсор в виде руки при наведении; некоторые
   считают, что необходимо оставлять стрелочный вид для кнопок */
   cursor: pointer;
+}
+
+.nav{
+  padding: 15px 20px;
+  margin: 0 20px;
+  font-style: none;
+  text-decoration: none;
+  font-size: 30px;
+  color:darkslategray;
+
+  border: solid 2px darkslategray;
+  border-radius: 10px;
 }
 
 </style>

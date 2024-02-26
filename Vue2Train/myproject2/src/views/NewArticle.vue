@@ -14,7 +14,7 @@
       },
       methods: {
         addArticle: function(article) {
-          store.commit('addArticle', article);
+          store.dispatch('addNewArticle', article);
           this.$router.push('/');
         },
       },
