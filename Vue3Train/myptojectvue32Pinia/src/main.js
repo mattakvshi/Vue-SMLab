@@ -6,7 +6,10 @@ import { createPinia } from 'pinia'
 
 const app = createApp(App)
 
-app.use(createPinia())
+// Инициировать Pinia
+const pinia = createPinia()
+app.use(pinia)
+
 
 app.component('PublicatedButton', PublicatedButton);
 

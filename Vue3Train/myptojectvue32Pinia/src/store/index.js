@@ -1,3 +1,5 @@
+//В этой версии проекта мы реализовали хранилище на Pinia
+
 import { defineStore } from 'pinia'
 
 export const useArticlesStore = defineStore('articles', {
