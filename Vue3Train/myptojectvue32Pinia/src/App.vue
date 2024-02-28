@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
-        <router-link to="/new">Add new article</router-link>
+        <router-link class="nav" to="/">Home</router-link>
+        <router-link class="nav" to="/about">About</router-link>
+        <router-link class="nav" to="/new">Add new article</router-link>
     </div>
     <router-view/>
   </div>
@@ -41,7 +41,6 @@ export default {
   align-items: center;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 button {
@@ -51,5 +50,24 @@ button {
   color: inherit;
   background-color: transparent;
   cursor: pointer;
+}
+
+.nav{
+  padding: 10px 15px;
+  margin: 0 20px;
+  font-style: none;
+  text-decoration: none;
+  font-size: 20px;
+  color:darkslategray;
+
+  border: solid 1px darkslategray;
+  border-radius: 10px;
+}
+.nav:hover {
+  opacity: 0.6;
+}
+
+#nav{
+  margin: 40px 0;
 }
 </style>

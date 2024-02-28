@@ -8,26 +8,28 @@
     
 <script>
 //import { useArticlesStore } from '../store'
-
+import {useRouter} from 'vue-router'
+ 
 export default {
     name: 'PageArticle',
     props: {
         article: Object
     },
-//     setup() {
+    setup(props) {
         
-//     // Получаем магазин статей
-//     const articlesStore = useArticlesStore();
+    // Получаем магазин статей
+    //const articlesStore = useArticlesStore();
+    const router = useRouter()
 
-//     // Если статья не найдена, перенаправляем на главную страницу
-//     if (!this.article) {
-//       articlesStore.router.push('/');
-//     }
+    // Если статья не найдена, перенаправляем на главную страницу
+    if (!props.article) {
+      router.push('/');
+    }
 
-//     // return {
-//     //   this.article,
-//     // };
-//   },
+    // return {
+    //   this.article,
+    // };
+  },
 }
 </script>
         <!-- Add "scoped" attribute to limit CSS to this component only -->

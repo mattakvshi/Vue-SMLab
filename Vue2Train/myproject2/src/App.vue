@@ -5,7 +5,7 @@
         <router-link class="nav" to="/about">About</router-link>
         <router-link class="nav" to="/new">Add new artivle</router-link>
     </div>
-    <router-view/>
+    <router-view class="container"/>
   </div>
 </template>
 
@@ -27,7 +27,6 @@ export default {
   align-items: center;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 button {
@@ -42,15 +41,22 @@ button {
 }
 
 .nav{
-  padding: 15px 20px;
+  padding: 10px 15px;
   margin: 0 20px;
   font-style: none;
   text-decoration: none;
-  font-size: 30px;
+  font-size: 20px;
   color:darkslategray;
 
-  border: solid 2px darkslategray;
+  border: solid 1px darkslategray;
   border-radius: 10px;
+}
+.nav:hover {
+  opacity: 0.6;
+}
+
+#nav{
+  margin: 40px 0;
 }
 
 </style>
