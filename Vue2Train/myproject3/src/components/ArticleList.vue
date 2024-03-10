@@ -3,6 +3,7 @@
       <h1>{{ msg }}</h1>
 
       <div v-if="articlesRequestStatus === 'REQUESTED'">
+        <img src="../assets/Bean Eater-1s-200px.svg"/>
         <p>Loading...</p>
         <button v-on:click="cancelLoadArticles">Cancel</button>
       </div>
@@ -19,12 +20,15 @@
         />
       </ul>
 
-
-      <div v-else-if="articlesRequestStatus === 'FAILED'">
+      <div v-else-if="articlesRequestStatus === 'FAILED' || articlesRequestStatus === 'CANCELED'">
         <p >
-          No articles in the list.
+          Loading errors, click Reload button.
         </p>
         <button v-on:click="reArticles">Reload</button>
+      </div>
+
+      <div v-else-if="!articles.lenght">
+        <p>No article in articles list.</p>
       </div>
 
 

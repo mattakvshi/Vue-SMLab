@@ -11,6 +11,7 @@ Vue.component('PublicatedButton', PublicatedButton)
 Vue.config.productionTip = false
 
 store.dispatch('ARTICLES_LOAD')
+//store.commit('ARTICLE_ADD_SUCCEDED')
 
 Vue.use(VueAxios, axios)
 

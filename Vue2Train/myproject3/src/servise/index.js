@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const loadArticles = async (cancelToken) => {
+export const loadArticles = async (signal) => {
     try{
         const response = await axios.get('http://localhost:3000/articles', {
-            cancelToken,
+            signal,
         });
         console.log(response.data)
         return response.data;

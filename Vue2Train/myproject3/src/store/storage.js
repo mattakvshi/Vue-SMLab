@@ -3,7 +3,8 @@ import { Types } from './types.js';
 
 const storage = {
     state: {
-        articles: []
+        articles: [],
+        articlesAddStatus: Types.request_status.SUCCEEDED
       },
       getters: {
         getArticles: (state) => {
@@ -14,12 +15,23 @@ const storage = {
         // fetchArticles(state, articles) {
         //   state.articles = articles;
         // },
+        [Types.mutations.ARTICLE_ADD_REQUESTED](state) {
+          state.articlesAddStatus = Types.request_status.REQUESTED;
+        },
+        [Types.mutations.ARTICLE_ADD_SUCCEDED](state) {
+          state.articlesAddStatus = Types.request_status.SUCCEEDED;
+          //state.articlesRequestStatus = Types.request_status.FAILED;
+        },
+        [Types.mutations.ARTICLE_ADD_FAILED](state) {
+          state.articlesAddStatus = Types.request_status.FAILED;
+        },
+
         [Types.mutations.ARTICLES_SUCCEEDED_2](state, articles) {
           //state.articlesRequestStatus = Types.request_status.SUCCEEDED;
           state.articles = articles;
           console.log(articles)
         },
-        addArticle(state, article) {
+        [Types.mutations.ADD_ARTICLE](state, article) {
           let newArticle = {
             id: 0,
             ...article
@@ -34,8 +46,17 @@ const storage = {
         }
       },
       actions: {
-        async addNewArticle({ commit }, newArticle) {
-          commit('addArticle', newArticle);
+        async [Types.actions.ADD_NEW_ARTICLE]({ commit }, newArticle) {
+          commit(Types.mutations.ARTICLE_ADD_REQUESTED)
+          setTimeout(3000);
+          try{
+            commit('ADD_ARTICLE', newArticle);
+            commit(Types.mutations.ARTICLE_ADD_SUCCEDED);
+          } catch {
+            commit(Types.mutations.ARTICLE_ADD_FAILED);
+          }
+          
+          
         }
       },
       modules: {

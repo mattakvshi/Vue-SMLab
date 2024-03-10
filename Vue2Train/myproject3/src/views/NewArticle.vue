@@ -4,6 +4,7 @@
 </template>
     
     <script>
+    import { mapState } from 'vuex';
     import ArticleForm from '../components/ArticleForm.vue'
     import store from '../store'
     
@@ -12,9 +13,13 @@
       components: {
         ArticleForm,
       },
+      computed: mapState({
+        articleAddStatus: state => state.storage.articleAddStatus
+      }),
       methods: {
         addArticle: function(article) {
-          store.dispatch('addNewArticle', article);
+          store.dispatch('ADD_NEW_ARTICLE', article);
+          setTimeout(3000);
           this.$router.push('/');
         },
       },

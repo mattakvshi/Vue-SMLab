@@ -1,0 +1,60 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Gnlgr lkwjge lrgej, llkjg",
+      "body": "Rlkgwlkenkregl elkrgjwlkeglkjlk kfglegkn lenr lrewglnl rkgngelgnlkjgnl lkngrelnlw n elrngl.",
+      "nameAuthor": "Kreagjle",
+      "isPublished": true
+    },
+    {
+      "id": 2,
+      "title": "GRG Rewglgk",
+      "body": "Gregjwirj eligjerij lqgr joij, wrqflkjwqogij wlig f wrlgjk, wiofj.",
+      "nameAuthor": "Gkgerpgkpoer",
+      "isPublished": true
+    },
+    {
+      "id": 3,
+      "title": "Rwelgjr",
+      "body": "Rjlierjgwleirgj eiorjgeiroj eroijio jropijoi ikjloikjl elkrjwglerjgleri",
+      "nameAuthor": "Grgroeijlle",
+      "isPublished": true
+    },
+    {
+      "id": 4,
+      "title": "Fnofwe joijwfe oinjoqw",
+      "body": "Jljknfqkwjenfi ihefwuqnfku uijwneorufn kjnesfjn kjwbnfkj skjfbkjb. Ofnowjfnkj jenfjwn nonfwojno enjfkjn wslfnl, wjnfoiw.",
+      "nameAuthor": "Elajnnfeon",
+      "isPublished": true
+    },
+    {
+      "id": 5,
+      "title": "RGlLKJG",
+      "body": "Kajpjfp lakrjgfiwlj lsjflakej lsdkfjlkj lskgjlkj ewrjlgj. Sjlkjlke lkjoeirwg lkjwlkf lijlwef lkwjg. Elgsjlrj.",
+      "nameAuthor": "Grgroeijlle",
+      "isPublished": true
+    },
+    {
+      "id": 6,
+      "title": "FELWFl lwkjgl lwfjl",
+      "body": "Llgkerjgl lekrjglewrjg lerkjgelrk j.wrkgjelrkgjl lkerrjglkj elkgelrkgj lkjgflj lsnflksnlkwmnl lekgnlk nlen.",
+      "nameAuthor": "Grgroeijlle",
+      "isPublished": true
+    },
+    {
+      "id": 7,
+      "title": "Rkgjpej pehijpet epgj",
+      "body": "Glnkj lrekwglk lknerlgknlk kenwglknmlrkmnknklkegn nlekwnglkn elknglkn lelkwgnlke nlkergwlkermlk kewrgmlkrmgklew lrewkmglkw lkmerlkgmm.",
+      "nameAuthor": "Grgroeijlle",
+      "isPublished": false
+    },
+    {
+      "id": 8,
+      "title": "JLjgwkj klgjlkfd JJJ",
+      "body": "Jlirgjli letjglwej lerkjwgljk lerjwgkjlker lkewjglkrje lekjwlgkjrl lkjerwgkljlkre lrjgwlkj lekrjgjlkj lkejrglkj jwlkrgjl.",
+      "nameAuthor": "Grgroeijlle",
+      "isPublished": false
+    }
+  ]
+}

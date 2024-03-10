@@ -1,6 +1,8 @@
 import { Types } from './types.js';
 import { loadArticles } from '@/servise/index.js';
-import axios from 'axios';
+//import axios from 'axios';
+
+let controller =  new AbortController();
 
 const load = {
     state: {
@@ -36,23 +38,26 @@ const load = {
         async [Types.actions.ARTICLES_LOAD]({ commit }) {
           commit(Types.mutations.ARTICLES_REQUESTED);
           
-          const cancelToken = axios.CancelToken.source();
+          //const cancelToken = axios.CancelToken.source();
+          controller =  new AbortController();
           
           try {
-            const articles = await loadArticles(cancelToken.token);
+            const articles = await loadArticles(controller.signal);
             console.log(articles)
-            console.log(cancelToken.token)
+            console.log(controller.signal)
+            //console.log(cancelToken.token)
             commit(Types.mutations.ARTICLES_SUCCEEDED);
             commit(Types.mutations.ARTICLES_SUCCEEDED_2, articles);
           } catch (error) {
             commit(Types.mutations.ARTICLES_FAILED, error);
           }
-            return cancelToken;
+            //return cancelToken;
           },
 
-          [Types.actions.ARTICLES_LOAD_CANCEL]({ commit, dispatch }) {
-            const cancelToken = dispatch(Types.actions.ARTICLES_LOAD);
-            cancelToken.cancel('Загрузка отменена');
+          [Types.actions.ARTICLES_LOAD_CANCEL]({ commit}) {
+            //const cancelToken = dispatch(Types.actions.ARTICLES_LOAD);
+            //cancelToken.cancel();
+            controller.abort()
             commit(Types.mutations.ARTICLES_CANCELED);
           }, 
       },
