@@ -1,0 +1,68 @@
+:root {
+	--extra-light: #e5e5e5;
+	--light-bg: #d2d2d2;
+	--dark: rgb(10, 31, 50);
+	--medium-dark: #2d384a;
+	--light-dark: #344756;
+	--accent-color: #ff4c2b;
+}
+
+.body-bg {
+	background-color: var(--extra-light);
+	color: var(--dark);
+}
+
+footer,
+header {
+	background-color: var(--accent-color);
+}
+
+container {
+	background-color: var(--light-bg);
+	border-radius: 15px;
+}
+
+.nav-item a {
+	font-size: 18px;
+	background-color: var(--light-bg);
+	color: var(--medium-dark);
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	border-radius: 10px;
+}
+
+.nav-item a:hover {
+	text-decoration: none;
+	color: var(--medium-dark);
+	background: linear-gradient(
+		to left,
+		var(--accent-color),
+		#e98074 50%,
+		var(--medium-dark)
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-size: 200% 100%;
+	background-position: 100%;
+	transition: background-position 275ms ease;
+}
+
+.form-bg {
+	border: var(--light-dark) solid 2px;
+	border-radius: 15px;
+}
+
+@media (min-width: 992px) {
+	container {
+		width: 75%;
+	}
+}
+
+@media (max-width: 992px) {
+	#table {
+		order: 2;
+	}
+	#formS {
+		order: 1;
+	}
+}

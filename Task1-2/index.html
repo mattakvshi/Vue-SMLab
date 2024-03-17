@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SidorenkoSMLab</title>
+		<link rel="stylesheet" href="./style/style.css" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="./style/reset.css" />
+	</head>
+	<body
+		class="body-bg d-flex flex-column justify-content-center align-items-center"
+	>
+		<header class="mb-2 w-100">
+			<div
+				class="logo-name-wrapper w-100 h-auto d-flex flex-row justify-content-center align-items-center"
+			>
+				<img class="p-2" src="https://i.gifer.com/av.gif" alt="logo" />
+				<div class="p-2 fs-1 fw-bold">mattakvshi.com</div>
+			</div>
+		</header>
+
+		<nav class="navbar w-100 h-auto d-flex flex-row">
+			<div
+				class="navbar__wrapper w-100 h-auto d-flex flex-row justify-content-center"
+			>
+				<ul
+					class="nav flex-column flex-sm-row justify-content-sm-center text-center"
+				>
+					<li class="nav-item ms-4">
+						<a class="nav-link m-2 px-4" aria-current="page" href="#links"
+							>Ссылки</a
+						>
+					</li>
+					<li class="nav-item ms-4">
+						<a class="nav-link m-2 px-4" href="#table">Таблица</a>
+					</li>
+					<li class="nav-item ms-4">
+						<a class="nav-link m-2 px-4" href="#formT">Форма</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<container class="mb-2 h-auto d-flex flex-column justify-content-center">
+			<section class="p-3">
+				<h2 class="text-center fs-4 fw-bold" id="links">Список гиперссылок</h2>
+				<ol class="ol">
+					<li>
+						<a href="http://example.com" id="#menu"
+							>Абсолютная гиперссылка на главную страницу сайта example.com</a
+						>
+					</li>
+					<li>
+						<a href="https://example.com"
+							>Абсолютная на главную сайта example.com в протоколе https</a
+						>
+					</li>
+					<li>
+						<a href="ftp://public.ftp-servers.example.com/mydirectory/file.zip"
+							>Сылка на файл на сервере FTP без авторизации</a
+						>
+					</li>
+					<li>
+						<a
+							href="ftp://user001:secretpassword@private.ftp-servers.example.com/mydirectory/file.zip"
+							>Ссылка на файл на сервере FTP с авторизацией</a
+						>
+					</li>
+					<li>
+						<a href="https://mattakvshi.github.io/#back" target="_blank"
+							>Ссылка на фрагмент страницы некоторого сайта</a
+						>
+					</li>
+					<li><a href="#“uyut”">Ссылка на фрагмент текущей страницы</a></li>
+					<li>
+						<a
+							href="https://www.example.com?key=Heroes_of_Might__Magic&version=delux"
+							target="_blank"
+							>Ссылка с двумя параметрами в URL</a
+						>
+					</li>
+					<li>
+						Навигация
+						<nav>
+							<ul class="ol">
+								<li><a href="#links">Ссылка на начало страници</a></li>
+								<li><a href="#formT">Ссылка на форму</a></li>
+							</ul>
+						</nav>
+					</li>
+					<li><a>Ссылка без href</a></li>
+					<li><a href="">Ссылка с пустым herf</a></li>
+					<li>
+						<a href="http://example.com" rel="nofollow"
+							>Ссылка, по которой запрещен переход поисковикам</a
+						>
+					</li>
+					<li>
+						<a href="http://example.com" rel="noindex"
+							>Ссылка запрещенную для индексации поисковиками</a
+						>
+					</li>
+					<li>
+						<p>
+							Комфортить - это значит поддерживать человека, делать всё, чтобы
+							он чувствовал себя хорошо, в безопасности, для того, чтобы он
+							расслабился и ощутил себя в своей тарелке. Так же это может
+							значить устраивать уют в помещении, то есть наводить порядок,
+							вешать разные красивые безделушки на стены, включить тихую
+							<a href="https://www.youtube.com/watch?v=hFoKgX3IHY4&t=2s"
+								>музыку</a
+							>, зажечь ароматические свечи, то есть, чтобы у любого, попавшего
+							в эту комнату появилось ощущения спокойствия и комфорта.
+						</p>
+					</li>
+					<li>
+						<a href="http://example.com" target="_blank"
+							><img
+								width="200px"
+								class="img-fluid"
+								src="https://i.gifer.com/2iFb.gif"
+								alt="Example"
+						/></a>
+					</li>
+					<li>
+						<img
+							width="200px"
+							class="img-fluid"
+							src="https://i.gifer.com/nRq.gif"
+							usemap="#figuri"
+							alt="There are 2 selections of the picture area"
+						/>
+						<map name="figuri">
+							<area
+								shape="rect"
+								coords="0,0,110,80"
+								href="http://yandex.ru"
+								alt="Квадрат"
+							/>
+							<area
+								shape="circle"
+								coords="150,110,50"
+								href="http://google.com"
+								alt="Круг"
+							/>
+						</map>
+					</li>
+					<li>
+						<a href="lap.html"
+							>Ссылка на относительную на страницу в текущем каталоге</a
+						>
+					</li>
+					<li>
+						<a href="about/about.html"
+							>Ссылка на относительную на страницу в каталоге about</a
+						>
+					</li>
+					<li>
+						<a href="../index.html"
+							>Ссылка на относительную на страницу в каталоге уровнем выше
+							текущего</a
+						>
+					</li>
+					<li>
+						<a href="../../index.html"
+							>Ссылка на относительную на страницу в каталоге двумя уровнями
+							выше</a
+						>
+					</li>
+					<li><a href="/">Ссылка сокращенная на главную</a></li>
+					<li><a href="/about">Сокращенная ссылку на внутреннюю</a></li>
+				</ol>
+			</section>
+
+			<section class="p-3" id="table">
+				<h2 class="text-center fs-4 fw-bold" id="table">Таблица</h2>
+				<table class="table table-hover text-center">
+					<tr>
+						<th scope="col">Колонка 1</th>
+						<th scope="col">Колонка 2</th>
+						<th scope="col">Колонка 3</th>
+					</tr>
+					<tr scope="row">
+						<td>Ячейка 11</td>
+						<td>Ячейка 12</td>
+						<td>Ячейка 13</td>
+					</tr>
+					<tr scope="row">
+						<td colspan="2">Ячейка 21 объединенная с 22</td>
+						<td rowspan="2" class="table-active">Ячейка 23 и 33</td>
+					</tr>
+					<tr scope="row">
+						<td>Ячейка 31</td>
+						<td>Ячейка 32</td>
+					</tr>
+					<tr scope="row">
+						<td>Ячейка 41</td>
+						<td>Ячейка 42</td>
+						<td>Ячейка 43</td>
+					</tr>
+					<tr class="table-active">
+						<td colspan="3">Ячейка 51 объединенная с 52 и 53</td>
+					</tr>
+				</table>
+			</section>
+
+			<section
+				class="p-3 d-flex flex-column justify-content-center align-items-center"
+				id="formS"
+			>
+				<h2 class="text-center fs-4 fw-bold" id="formT">Форма</h2>
+				<form
+					id="form"
+					action="https://formcarry.com/s/2-eqWanmX"
+					method="POST"
+					class="form-bg p-3 w-75 d-flex flex-column justify-content-center"
+				>
+					<div class="mb-3">
+						<label for="field-name-1" class="form-label">Имя</label>
+						<input
+							type="text"
+							class="form-control"
+							id="field-name-1"
+							name="field-name-1"
+							placeholder="Введите имя"
+						/>
+					</div>
+					<div class="mb-3">
+						<label for="field-email" class="form-label">email</label>
+						<input
+							type="email"
+							class="form-control"
+							id="field-email"
+							name="field-email"
+							placeholder="Введите почту"
+						/>
+					</div>
+					<div class="mb-3">
+						<label for="field-date" class="form-label">Дата рождения</label>
+						<input
+							type="date"
+							class="form-control"
+							id="field-date"
+							name="field-date"
+							value="2022-02-02"
+						/>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Пол</label>
+						<div class="form-check">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="radio-group-2"
+								id="radio-group-2-1"
+								value="Значение1"
+								checked
+							/>
+							<label class="form-check-label" for="radio-group-2-1"
+								>Мужской</label
+							>
+						</div>
+						<div class="form-check">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="radio-group-2"
+								id="radio-group-2-2"
+								value="Значение2"
+							/>
+							<label class="form-check-label" for="radio-group-2-2"
+								>Женский</label
+							>
+						</div>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Количество конечностей</label>
+						<div class="form-check">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="radio-group-1"
+								id="radio-group-1-1"
+								value="Значение1"
+								checked
+							/>
+							<label class="form-check-label" for="radio-group-1-1">1</label>
+						</div>
+						<div class="form-check">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="radio-group-1"
+								id="radio-group-1-2"
+								value="Значение2"
+								checked
+							/>
+							<label class="form-check-label" for="radio-group-1-2">2</label>
+						</div>
+						<div class="form-check">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="radio-group-1"
+								id="radio-group-1-3"
+								value="Значение3"
+								checked
+							/>
+							<label class="form-check-label" for="radio-group-1-3">3</label>
+						</div>
+						<div class="form-check">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="radio-group-1"
+								id="radio-group-1-4"
+								value="Значение4"
+							/>
+							<label class="form-check-label" for="radio-group-1-4">4</label>
+						</div>
+					</div>
+					<div class="mb-3">
+						<label for="field-name-4" class="form-label"
+							>Сверхспособности</label
+						>
+						<select
+							class="form-select"
+							id="field-name-4"
+							name="field-name-4[]"
+							multiple
+						>
+							<option value="Значение1">Бессмертие</option>
+							<option value="Значение2" selected>Левитация</option>
+							<option value="Значение3" selected>
+								Прохождение сквозь стены
+							</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="field-name-2" class="form-label">Биография</label>
+						<textarea
+							class="form-control"
+							id="field-name-2"
+							name="field-name-2"
+							style="height: 100px"
+							placeholder="Напишите что-то о себе"
+						></textarea>
+					</div>
+					<div class="mb-3 form-check">
+						<input
+							type="checkbox"
+							class="form-check-input"
+							id="check-1"
+							name="check-1"
+							checked
+						/>
+						<label class="form-check-label" for="check-1"
+							>с контрактом ознакомлен (а)</label
+						>
+					</div>
+					<button type="submit" id="submit-button" class="btn btn-dark">
+						Отправить
+					</button>
+					<button type="button" id="cancel-button" class="btn btn-dark mt-2" style="display: none;">Отменить</button>
+				</form>
+			</section>
+		</container>
+		<footer
+			style="height: 100px"
+			class="w-100 d-flex justify-content-center align-items-center fs-5 fw-medium"
+		>
+			Сидоренко Максим 2022
+		</footer>
+	</body>
+	<script src="./js/index.js"></script>
+</html>
