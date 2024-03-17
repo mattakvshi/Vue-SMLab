@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 
 import { Types } from './types';
 
-import { loadArticles, canselLoaded, addArticle } from '@/servise';
+import { loadArticles, canselLoaded, addArticle, failedStatus } from '@/servise';
 
 export const useArticlesStore = defineStore('articles', {
   state: () => ({
@@ -42,6 +42,7 @@ export const useArticlesStore = defineStore('articles', {
         this.articles = articles;
       } catch (error) {
         if (this.articleRequestStatus != 'CANCELED'){
+          failedStatus();
           this.articleRequestStatus = Types.request_status.FAILED
           console.log('Server error')
         } else {

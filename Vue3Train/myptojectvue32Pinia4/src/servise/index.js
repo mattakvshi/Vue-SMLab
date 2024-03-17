@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from '../router'
 
 let controller =  new AbortController();
 
@@ -30,8 +31,13 @@ export const addArticle = async (article) => {
     try {
         const response = await axios.post('http://localhost:3000/articles', article);
         console.log(response.data);
-        this.articles.unshift(response.data); // Добавление новой статьи в массив статей
+        //this.articles.unshift(response.data); // Добавление новой статьи в массив статей
       } catch (error) {
         console.error('Error adding article:', error);
       }
 };
+
+export const failedStatus = (() => {
+    //const router = useRouter();
+    router.push('/cancelorfailed');
+})
