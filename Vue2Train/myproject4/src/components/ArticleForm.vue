@@ -48,17 +48,66 @@
           ></v-checkbox>
           <div class="d-flex flex-row justify-center">
           <v-btn
+            color="deep-purple lighten-3"
+            min-width="200"
             class="mr-4"
             elevation="2"
-            type="submit"
             value="Add"
             :disabled="$v.$invalid"
-            v-on:click.prevent="$emit('add-article', article)"
-            @click="submit"
+            
+            @click.stop="dialog = true"
           >Add</v-btn>
-        <v-btn elevation="2" @click="clear">clear</v-btn>
+        <v-btn min-width="200" elevation="2" @click="clear">clear</v-btn>
       </div>
       </form>
+
+      <v-row justify="center">
+    <!-- <v-btn
+      color="primary"
+      dark
+      @click.stop="dialog = true"
+    >
+      Open Dialog
+    </v-btn> -->
+
+    <v-dialog
+      v-model="dialog"
+      max-width="500"
+    >
+      <v-card>
+        <v-card-title class="text-h5">
+          Are you sure you want to add a new article?
+        </v-card-title>
+
+        <v-card-text>
+          After confirmation, you will be redirected to the home page, which will display all existing articles, including the one you are adding now. When you refresh the page, your added article will disappear, since we have not yet implemented sending to the backend in this version.
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            color="deep-purple"
+            text
+            @click="dialog = false"
+          >
+            Disagree
+          </v-btn>
+
+          <v-btn
+            color="deep-purple"
+            text
+            type="submit"
+            v-on:click.prevent="$emit('add-article', article)"
+            
+            @click="submit"
+          >
+            Agree
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-row>
     </div>
   </template>
 
@@ -94,6 +143,7 @@
           nameAuthor: this.nameAuthor,
           isPublished: false,
         },
+        dialog: false,
       };
     },
     computed: {

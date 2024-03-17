@@ -22,13 +22,146 @@
         </v-tab>
       </v-tabs>
 
-      <v-avatar
-        class="hidden-sm-and-down"
-        color="deep-purple darken-3 shrink"
-        size="40"
+
+      
+
+      <v-menu
+        bottom
+        offset-y
       >
-        <span class="white--text text-h6">CM</span>
-      </v-avatar>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="mr-6"
+            max-width="5"
+            min-width="5"
+            v-bind="attrs"
+            v-on="on"
+            rounded
+          >
+            <v-avatar
+              class="hidden-sm-and-down mr-"
+             color="deep-purple darken-3 shrink"
+              size="40"
+            >
+              <span class="white--text text-h6">CM</span>
+            </v-avatar>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="(item, i) in dropDownItems"
+            :key="i"
+            @click.stop="() => {
+              if(item.link === 'settings') changeDialog();
+            }"
+            v-on:click="pushLikns(item.link)"
+          >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
+
+
+      <v-row justify="center">
+    <v-dialog
+      v-model="dialog"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
+      <!-- <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          Open Dialog
+        </v-btn>
+      </template> -->
+      <v-card class="indigo lighten-4">
+        <v-toolbar
+          dark
+          class="deep-purple darken-3"
+        >
+          <v-btn
+            icon
+            dark
+            @click="dialog = false"
+          >
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+          <v-toolbar-title>Settings</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn
+              dark
+              text
+              @click="dialog = false"
+            >
+              Save
+            </v-btn>
+          </v-toolbar-items>
+        </v-toolbar>
+        <v-list
+          class="indigo lighten-4"
+          three-line
+          subheader
+        >
+          <v-subheader>User Controls</v-subheader>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>Content filtering</v-list-item-title>
+              <v-list-item-subtitle>Set the content filtering level to restrict apps that can be downloaded</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>Password</v-list-item-title>
+              <v-list-item-subtitle>Require password for purchase or use password to restrict purchase</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+        <v-divider></v-divider>
+        <v-list
+        class="indigo lighten-4"
+          three-line
+          subheader
+        >
+          <v-subheader>General</v-subheader>
+          <v-list-item>
+            <v-list-item-action>
+              <v-checkbox v-model="notifications"></v-checkbox>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Notifications</v-list-item-title>
+              <v-list-item-subtitle>Notify me about updates to apps or games that I downloaded</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-action>
+              <v-checkbox v-model="sound"></v-checkbox>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Sound</v-list-item-title>
+              <v-list-item-subtitle>Auto-update apps at any time. Data charges may apply</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-action>
+              <v-checkbox v-model="widgets"></v-checkbox>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Auto-add widgets</v-list-item-title>
+              <v-list-item-subtitle>Automatically add home screen widgets</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-card>
+    </v-dialog>
+  </v-row>
+
     </v-app-bar>
 
     <!-- Основная секция -->
@@ -104,13 +237,60 @@ import router from './router';
         ['/icons8-github.svg', 'https://github.com/mattakvshi'],
         ['/icons8-линкедин.svg', 'https://www.linkedin.com/in/mattakvshi'],
       ],
+      dropDownItems: [
+          {
+            title: 'Profile',
+            link: '',
+            click: () => {
+              this.pushLikns(this.link);
+            }
+          },
+          {
+            title: 'Settings',
+            link: 'settings',
+            click: () => {
+              this.changeDialog();
+            } 
+  
+          },
+          {
+            title: 'Home',
+            link: '/',
+            click: () => {
+              this.pushLikns(this.link);
+            }
+            
+          },
+          {
+            title: 'About us',
+            link: '/about',
+            click: () => {
+              this.pushLikns(this.link);
+            }
+            
+          },
+          {
+            title: 'Add new article',
+            link: '/new',
+            click: () => {
+              this.pushLikns(this.link);
+            }
+          },
+        ],
+        dialog: false,
+        notifications: false,
+        sound: true,
+        widgets: false,
     }),
     methods: {
       pushLikns(link){	
         console.log(window.location.pathname)
-        if(window.location.pathname !== link) {
+        if(window.location.pathname !== link && link !== 'settings' && link !== '') {
           router.push(link)
         }
+      },
+      changeDialog() {
+        this.dialog = true;
       },
       pushFoterLinks(link){
         window.open(link, '_blank')
