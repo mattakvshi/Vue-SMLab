@@ -47,7 +47,7 @@
             </v-avatar>
           </v-btn>
         </template>
-        <v-list>
+        <v-list class="blue-grey lighten-5">
           <v-list-item
             v-for="(item, i) in dropDownItems"
             :key="i"
@@ -56,6 +56,7 @@
             }"
             v-on:click="pushLikns(item.link)"
           >
+            <v-icon class="mr-2" color="deep-purple lighten-2">{{item.icon}}</v-icon>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -167,7 +168,43 @@
     <!-- Основная секция -->
     <v-main class="indigo lighten-4  d-flex justify-center">
       <v-container class="mx-auto">
-        <v-row class="d-flex justify-center">
+        <v-row style="position: relative;" class="d-flex justify-center">
+
+          <!-- <v-col
+            style="position: absolute; left: 0px; top: 0px;"
+            cols="12"
+            sm="2"
+          >
+            <v-sheet
+              rounded="lg"
+              min-height="268"
+            >
+            <v-list rounded="lg">
+              <h3 class="text-center">Manual block</h3>
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title>You are on the {{ pageName(window.location.pathname) }} page</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item two-line>
+                <v-list-item-content>
+                  <v-list-item-title>Actions</v-list-item-title>
+                  <v-list-item-subtitle>{{ pageActions(window.location.pathname) }}</v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item three-line>
+                <v-list-item-content>
+                  <v-list-item-title>Information</v-list-item-title>
+                  <v-list-item-subtitle>
+                    {{ pageInformation(window.location.pathname)}}
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+            </v-sheet>
+          </v-col> -->
 
           <v-col
             cols="12"
@@ -241,6 +278,7 @@ import router from './router';
           {
             title: 'Profile',
             link: '',
+            icon: 'mdi-account',
             click: () => {
               this.pushLikns(this.link);
             }
@@ -248,6 +286,7 @@ import router from './router';
           {
             title: 'Settings',
             link: 'settings',
+            icon: 'mdi-brightness-5',
             click: () => {
               this.changeDialog();
             } 
@@ -256,6 +295,7 @@ import router from './router';
           {
             title: 'Home',
             link: '/',
+            icon: 'mdi-home',
             click: () => {
               this.pushLikns(this.link);
             }
@@ -264,6 +304,7 @@ import router from './router';
           {
             title: 'About us',
             link: '/about',
+            icon: 'mdi-widgets',
             click: () => {
               this.pushLikns(this.link);
             }
@@ -272,9 +313,30 @@ import router from './router';
           {
             title: 'Add new article',
             link: '/new',
+            icon: 'mdi-pencil',
             click: () => {
               this.pushLikns(this.link);
             }
+          },
+        ],
+        manualData: [
+          {
+            link: '/',
+            name: 'home',
+            action: '',
+            information: '',
+          },
+          {
+            link: '/about',
+            name: 'about us',
+            action: '',
+            information: '',
+          },
+          {
+            link: '/new',
+            name: 'add new article',
+            action: '',
+            information: '',
           },
         ],
         dialog: false,
@@ -282,6 +344,20 @@ import router from './router';
         sound: true,
         widgets: false,
     }),
+    // computed: {
+    //   pageName(link){
+    //     let item = this.manualData.find(item => item.link === link);
+    //     return item.name
+    //   },
+    //   pageActions(){
+    //     this.manualData.forEach((item) => { if (item.link === window.location.pathname) return item.action})
+    //     return false
+    //   },
+    //   pageInformation(){
+    //     this.manualData.forEach((item) => { if (item.link === window.location.pathname) return item.information})
+    //     return false
+    //   },
+    // },
     methods: {
       pushLikns(link){	
         console.log(window.location.pathname)
