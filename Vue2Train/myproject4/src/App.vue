@@ -3,11 +3,13 @@
 
     <!-- Навигация -->
     <v-app-bar
+      :style="appBarStyle"
       app
       color="deep-purple lighten-5"
       flat
     >
       <v-tabs
+        :style="tabsStyle"
         centered
         class="ml-n9"
         color="indigo lighten-1"
@@ -23,8 +25,6 @@
       </v-tabs>
 
 
-      
-
       <v-menu
         bottom
         offset-y
@@ -38,6 +38,8 @@
             v-on="on"
             rounded
           >
+            <v-icon color="deep-purple darken-4" :style="menuStyle" >mdi-menu</v-icon>
+
             <v-avatar
               class="hidden-sm-and-down mr-"
              color="deep-purple darken-3 shrink"
@@ -265,15 +267,18 @@ import router from './router';
 
   export default {
     data: () => ({
+
       links: [
          [ '/', 'Home'] ,
          [ '/about', 'About'] ,
          [ '/new',  'Add new article'] ,
       ],
+
       icons: [
         ['/icons8-github.svg', 'https://github.com/mattakvshi'],
         ['/icons8-линкедин.svg', 'https://www.linkedin.com/in/mattakvshi'],
       ],
+
       dropDownItems: [
           {
             title: 'Profile',
@@ -319,6 +324,7 @@ import router from './router';
             }
           },
         ],
+
         manualData: [
           {
             link: '/',
@@ -339,38 +345,75 @@ import router from './router';
             information: '',
           },
         ],
+
         dialog: false,
         notifications: false,
         sound: true,
         widgets: false,
+
+        screenWidth: window.innerWidth,
     }),
-    // computed: {
-    //   pageName(link){
-    //     let item = this.manualData.find(item => item.link === link);
-    //     return item.name
-    //   },
-    //   pageActions(){
-    //     this.manualData.forEach((item) => { if (item.link === window.location.pathname) return item.action})
-    //     return false
-    //   },
-    //   pageInformation(){
-    //     this.manualData.forEach((item) => { if (item.link === window.location.pathname) return item.information})
-    //     return false
-    //   },
-    // },
+
+    computed: {
+
+      menuStyle() {
+        //console.log(window.screen.width)
+        return this.screenWidth < 960 ? 'display: block;' : 'display: none;';
+      }, 
+
+      tabsStyle() {
+        //console.log(window.screen.width)
+        return this.screenWidth < 960 ? 'display: none;' : 'display: block;';
+      },
+
+      appBarStyle(){
+        return this.screenWidth < 960 ? '' : 'display: flex; justify-content: right;';
+      },
+
+
+      // pageName(link){
+      //   let item = this.manualData.find(item => item.link === link);
+      //   return item.name
+      // },
+      // pageActions(){
+      //   this.manualData.forEach((item) => { if (item.link === window.location.pathname) return item.action})
+      //   return false
+      // },
+      // pageInformation(){
+      //   this.manualData.forEach((item) => { if (item.link === window.location.pathname) return item.information})
+      //   return false
+      // },
+    },
+
+    mounted() {
+      window.addEventListener('resize', this.getWindowWidth);
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('resize', this.getWindowWidth);
+    },
+
     methods: {
+
       pushLikns(link){	
         console.log(window.location.pathname)
         if(window.location.pathname !== link && link !== 'settings' && link !== '') {
           router.push(link)
         }
       },
+
       changeDialog() {
         this.dialog = true;
       },
+
       pushFoterLinks(link){
         window.open(link, '_blank')
+      },
+
+      getWindowWidth() {
+        this.screenWidth = window.innerWidth;
       }
+
     },
   }
 </script>

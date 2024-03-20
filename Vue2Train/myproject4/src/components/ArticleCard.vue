@@ -1,7 +1,7 @@
 <template>
   <v-card
   class ="ma-3" :style="cardColorDefault" v-bind:class="{'indigo lighten-4': !published}" 
-    max-width="400"
+    :max-width="maxCardWidth"
   >
     <v-img
       class="white--text align-end"
@@ -51,8 +51,11 @@ export default {
   data() {
     return {
       published: this.isPublished,
+
+      screenWidth: window.innerWidth,
     };
   },
+
   props: {
     id: Number,
     title: String,
@@ -60,7 +63,9 @@ export default {
     nameAuthor: String,
     isPublished: Boolean
   },
+
   computed: {
+
     nameAuthorItalic(){
       return this.published ? 'font-style: normal;' : 'font-style: italic;';
     },
@@ -76,25 +81,47 @@ export default {
     notPublishedText(){
       return this.published ? 'publushed' : 'not published';
     },
+
     articleUrl(){
         return "/article/" + this.$props.id
     },
+
     getSrcImg(){
       if(this.$props.id <= 8) {
         return "/img/" + this.$props.id + ".jpg"
       } else {
         return "/img/default.jpeg"
       }
-    }
+    },
+
+    maxCardWidth(){
+        return this.screenWidth < 440 ? '300' : '400';
+    },
   },
+
+  mounted() {
+    window.addEventListener('resize', this.getWindowWidth);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.getWindowWidth);
+  },
+
   methods:{
+
     chenchPublished(){
       this.published = !this.published 
     },
+
     pushToUrl(url){
       router.push(url)
+    },
+
+    getWindowWidth() {
+        this.screenWidth = window.innerWidth;
     }
   },
+
   watch: {
     published(newVal, oldVal){
       console.log(`${newVal} ${oldVal}`)

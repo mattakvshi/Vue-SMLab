@@ -16,7 +16,7 @@
         >Cancel</v-btn>
       </div>
 
-      <ul class="d-flex flex-row justify-center flex-wrap pa-6 mt-6 " v-else-if="articlesRequestStatus === 'SUCCEEDED'">
+      <ul :class="cardListStyle" v-else-if="articlesRequestStatus === 'SUCCEEDED'">
         <ArticleCard
           v-for="article in articles"
           :key="article.id"
@@ -71,7 +71,14 @@
     components: {
       ArticleCard,
     },
+    data: () => ({
+      screenWidth: window.innerWidth,
+
+    }),
     computed: {
+      cardListStyle(){
+        return this.screenWidth < 440 ? 'd-flex flex-row justify-center flex-wrap pa-3 mt-0' : 'd-flex flex-row justify-center flex-wrap pa-6 mt-6';
+      },
       // articles() {
       //   try {
       //     return this.$store.state.storage.articles;
@@ -90,6 +97,15 @@
       }),
       //...mapState('store', ['articlesRequestStatus'])
     },
+
+    mounted() {
+      window.addEventListener('resize', this.getWindowWidth);
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('resize', this.getWindowWidth);
+    },
+
     methods: {
       reArticles(){
         try {
@@ -105,12 +121,16 @@
 
       cancelLoadArticles(){
         store.dispatch('ARTICLES_LOAD_CANCEL')
-      }
+      },
       //...mapActions('load', ['ARTICLES_LOAD', 'ARTICLES_LOAD_CANCEL']),
 
       // reArticles(){
       //   this.loadArticles();
       // }
+
+      getWindowWidth() {
+        this.screenWidth = window.innerWidth;
+      }
     }
   }
   </script>
