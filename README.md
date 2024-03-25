@@ -17,7 +17,7 @@
 ## Vue.js (3) stack
 - Vue.js v3 - Composition API
 - vue-cli - standart development tools
--Pinia - state manager
+- Pinia - state manager
 - json-server - backend
 - Vuetify - Vuetify is a collection of pre-made components paired with powerful features. Vuetify components created according to Google's Material Design specification.
 ---
