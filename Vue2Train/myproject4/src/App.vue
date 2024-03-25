@@ -31,6 +31,7 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-btn
+            :style="appBarButton"
             class="mr-6"
             max-width="5"
             min-width="5"
@@ -358,7 +359,7 @@ import router from './router';
 
       menuStyle() {
         //console.log(window.screen.width)
-        return this.screenWidth < 960 ? 'display: block;' : 'display: none;';
+        return this.screenWidth < 960 ? 'display: flex; justify: right;' : 'display: none;';
       }, 
 
       tabsStyle() {
@@ -367,8 +368,11 @@ import router from './router';
       },
 
       appBarStyle(){
-        return this.screenWidth < 960 ? '' : 'display: flex; justify-content: right;';
+        return this.screenWidth < 960 ? 'position: relative;' : '';
       },
+      appBarButton(){
+        return this.screenWidth < 960 ? 'position: absolute; right: 8px; top: 8px;' : '';
+      }
 
 
       // pageName(link){
